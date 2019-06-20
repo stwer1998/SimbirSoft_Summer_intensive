@@ -11812,11 +11812,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\Task_Manager\\Task_Manager\\Task_Manager.csproj",
+      "projectUniqueName": "d:\\C#\\SimbirSoft_Summer_intensive\\Task_Manager\\Task_Manager\\Task_Manager.csproj",
       "projectName": "Task_Manager",
-      "projectPath": "C:\\Users\\Администратор\\source\\repos\\Task_Manager\\Task_Manager\\Task_Manager.csproj",
+      "projectPath": "d:\\C#\\SimbirSoft_Summer_intensive\\Task_Manager\\Task_Manager\\Task_Manager.csproj",
       "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Администратор\\source\\repos\\Task_Manager\\Task_Manager\\obj\\",
+      "outputPath": "d:\\C#\\SimbirSoft_Summer_intensive\\Task_Manager\\Task_Manager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"

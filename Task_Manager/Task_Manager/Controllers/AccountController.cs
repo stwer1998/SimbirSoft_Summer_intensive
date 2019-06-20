@@ -32,7 +32,7 @@ namespace Task_Manager.Controllers
             {
                 await Authenticate(model.Name); // аутентификация
 
-                return RedirectToAction("MyGroups", "Home");
+                return RedirectToAction("Index", "Home");
             }
             else return View(model);
 
@@ -56,7 +56,7 @@ namespace Task_Manager.Controllers
                 User u = new User { Name = model.Name, Password = model.Password };
                 unitofwork.AddUser(u);
                 await Authenticate(model.Name);
-                return RedirectToAction("MyGroups", "Home");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }

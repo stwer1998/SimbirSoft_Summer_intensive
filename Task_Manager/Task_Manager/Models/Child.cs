@@ -8,7 +8,7 @@ namespace Task_Manager.Models
         public int ChildId { get; private set; }
         public string Name { get;  set; }
         public string Surname { get; set; }
-        public ICollection<ITaskElement> Tasks { get; set; }
+        public ICollection<ITaskType> Tasks { get; set; }
         public ICollection<ITaskElement> MissedTasks { get;  set; }
     }
 }
