@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "AddTask";
+}
+@model Task_Manager.Models.TaskModel
+<h2>AddTask</h2>
+
+<form asp-antiforgery="true" asp-action="AddTask" asp-controller="Settings">
+    <div>
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" name="ChildId" value="@ViewData["chlildId"]" />
+        <div>
+            <label asp-for="TypeTask">Категория занятие</label><br />
+            <input type="text" asp-for="TypeTask" />
+            <span asp-validation-for="TypeTask"></span>
+        </div>
+        <div>
+            <label asp-for="NameTask">Название занития</label><br />
+            <input type="text" asp-for="NameTask" />
+            <span asp-validation-for="NameTask"></span>
+        </div>
+        <div>
+            <label asp-for="Description">Описание занятие</label><br />
+            <input type="text" asp-for="Description" />
+            <span asp-validation-for="Description"></span>
+        </div>
+        <div>
+            <label asp-for="Periodicity">Периодичность занятие</label><br />
+            <input type="number" asp-for="Periodicity" />
+            <span asp-validation-for="Periodicity"></span>
+        </div>
+
+
+        <div>
+            <input type="submit" value="Добавить" />
+        </div>
+    </div>
+</form>

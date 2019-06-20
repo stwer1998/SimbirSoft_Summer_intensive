@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "AddChild";
+}
+@model Task_Manager.Models.Child
+<h2>AddChild</h2>
+
+<form asp-antiforgery="true" asp-action="AddChild" asp-controller="Settings">
+    <div>
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+        <div>
+            <label asp-for="Name">Имя ребёнка</label><br />
+            <input type="text" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="Surname">Фамилия ребёнка</label><br />
+            <input type="text" asp-for="Surname" />
+            <span asp-validation-for="Surname"></span>
+        </div>
+
+        <div>
+            <input type="submit" value="Добавить" />
+        </div>
+    </div>
+</form>

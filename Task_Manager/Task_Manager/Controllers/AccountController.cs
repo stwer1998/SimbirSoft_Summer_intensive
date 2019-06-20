@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Task_Manager.Interfaces;
+using Task_Manager.Models;
 
 namespace Task_Manager.Controllers
 {
@@ -24,13 +26,14 @@ namespace Task_Manager.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
-            if (!unitofwork.GetUser(model.Name, model.Password))
+            var user = unitofwork.GetUser(model.Login, model.Password);
+            if (user==null)
             {
                 ModelState.AddModelError("", "Пользователь с таким логином и паролем не найден");
             }
-            if (ModelState.IsValid && unitofwork.GetUser(model.Name, model.Password))
+            if (ModelState.IsValid)
             {
-                await Authenticate(model.Name); // аутентификация
+                await Authenticate(user.Login); // аутентификация
 
                 return RedirectToAction("Index", "Home");
             }
@@ -53,9 +56,9 @@ namespace Task_Manager.Controllers
             }
             if (ModelState.IsValid)
             {
-                User u = new User { Name = model.Name, Password = model.Password };
+                User u = new User { Name = model.Name, Password = model.Password,Login=model.Login,Surname=model.Surname,Childs=new List<Child>() };
                 unitofwork.AddUser(u);
-                await Authenticate(model.Name);
+                await Authenticate(model.Login);
                 return RedirectToAction("Index", "Home");
             }
             return View();

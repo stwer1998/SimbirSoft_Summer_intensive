@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Task_Manager.Interfaces;
+using Task_Manager.Models;
 
-namespace Task_Manager
+namespace Task_Manager.Repository
 {
     public class AccountReposirory : IAccountReposirory
     {
@@ -25,9 +27,11 @@ namespace Task_Manager
             else return true;
         }
 
-        public bool GetUser(string login, string password)
+        User IAccountReposirory.GetUser(string login, string password)
         {
-            throw new NotImplementedException();
+            var u=db.Users.FirstOrDefault(x=>x.Login==login&&x.Password==password);
+            if (u.Login == login) { return u; }
+            else return null;
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Task_Manager.Models;
 
-namespace Task_Manager
+namespace Task_Manager.Interfaces
 {
     public interface IAccountReposirory
     {
@@ -12,7 +13,7 @@ namespace Task_Manager
         /// <param name="login"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        bool GetUser(string login, string password);
+        User GetUser(string login, string password);
         /// <summary>
         /// Добавления пользователя в базу данных
         /// </summary>

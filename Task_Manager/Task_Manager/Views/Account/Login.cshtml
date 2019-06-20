@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Login";
 }
-@model Task_Manager.LoginModel
+@model Task_Manager.Models.LoginModel
 <h2>Login</h2>
 
 <form asp-antiforgery="true" asp-action="Login" asp-controller="Account">
@@ -10,19 +10,19 @@
         <div class="validation" asp-validation-summary="ModelOnly"></div>
 
         <div>
-            <label asp-for="Name"></label><br />
-            <input type="text" asp-for="Name" />
-            <span asp-validation-for="Name"></span>
+            <label asp-for="Login">Логин</label><br />
+            <input type="text" asp-for="Login" />
+            <span asp-validation-for="Login"></span>
         </div>
 
         <div>
-            <label asp-for="Password"></label><br />
+            <label asp-for="Password">Пароль</label><br />
             <input asp-for="Password" type="password" />
             <span asp-validation-for="Password"></span>
         </div>
 
         <div>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Вход" />
         </div>
     </div>
 </form>
