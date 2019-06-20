@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Task_Manager
+namespace Task_Manager.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage = "Не указано логин")]
+        [Required(ErrorMessage = "Не указан логин")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Не указано пароль")]
+        [Required(ErrorMessage = "Не указан пароль")]
         public string Password { get; set; }
     }
 }
