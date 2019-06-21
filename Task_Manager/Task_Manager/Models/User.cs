@@ -10,8 +10,8 @@ namespace Task_Manager.Models
         public string Name { get; set; }
         public string Password { get; set; }
         public string Surname { get; set; }
-        public List<Child> Childs { get; set; }
         public string Login { get; set; }
+        public DateTime RegisterDate { get; set; }
         public DateTime UpdateTime { get; set; }
     }
 }

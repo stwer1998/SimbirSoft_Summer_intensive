@@ -9,6 +9,8 @@ namespace Task_Manager.Models
     {
         public int TaskForDateId { get; private set; }
         public TaskElement TaskElement { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime DateOfTask { get; set; }
+        public int ChildId { get; set; }
+        public bool IsDone { get; set; }
     }
 }

@@ -37,7 +37,11 @@ namespace Task_Manager
             //    options.MinimumSameSitePolicy = SameSiteMode.None;
             //});
             services.AddScoped<IAccountReposirory,AccountReposirory>();
-            services.AddScoped<IDateRepository, DateRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IChildRepository,ChildRepository>();
+            services.AddScoped<IScheduleRepository,ScheduleRepository>();
+            services.AddScoped<ITaskRepository,TaskRepository>();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
               .AddCookie(options => //CookieAuthenticationOptions
               {

@@ -13,23 +13,24 @@ namespace Task_Manager.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        public IDateRepository db;
-        public HomeController(IDateRepository _db)
+        public IUserRepository dbUser;
+        public HomeController(IUserRepository dbUser)
         {
-            db = _db;
+            this.dbUser = dbUser;
         }      
 
 
         public IActionResult Index()
         {           
-            db.UpdateUserDate(User.Identity.Name);
-            ViewData["list"]= db.GetTodayTasks(User.Identity.Name);
+            
+
             return View();
         }
 
         public IActionResult Settings()
         {
-            ViewData["list"] = db.GetChilds(User.Identity.Name);
+           
+
             return View();
         }
         

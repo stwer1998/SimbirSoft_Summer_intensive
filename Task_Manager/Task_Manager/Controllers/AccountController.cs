@@ -12,9 +12,9 @@ namespace Task_Manager.Controllers
     public class AccountController : Controller
     {
         private IAccountReposirory unitofwork;
-        public AccountController(IAccountReposirory _unitofwork)
+        public AccountController(IAccountReposirory unitofwork)
         {
-            unitofwork = _unitofwork;
+            this.unitofwork = unitofwork;
         }
 
         [HttpGet]
@@ -56,7 +56,7 @@ namespace Task_Manager.Controllers
             }
             if (ModelState.IsValid)
             {
-                User u = new User { Name = model.Name, Password = model.Password,Login=model.Login,Surname=model.Surname,Childs=new List<Child>() };
+                User u = new User { Name = model.Name, Password = model.Password,Login=model.Login,Surname=model.Surname };
                 unitofwork.AddUser(u);
                 await Authenticate(model.Login);
                 return RedirectToAction("Index", "Home");

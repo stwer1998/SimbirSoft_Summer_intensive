@@ -12,10 +12,10 @@ namespace Task_Manager.Controllers
     [Authorize]
     public class SettingsController : Controller
     {
-        private IDateRepository db;
-        public SettingsController(IDateRepository _db)
+        private IUserRepository db;
+        public SettingsController(IUserRepository db)
         {
-            db = _db;
+            this.db = db;
         }
         [HttpGet]
         public IActionResult AddChild()
@@ -25,18 +25,6 @@ namespace Task_Manager.Controllers
         [HttpPost]
         public IActionResult AddChild(Child child)
         {
-            if (ModelState.IsValid)
-            {
-                db.AddChild(User.Identity.Name, new Child()
-                {
-                    Name = child.Name,
-                    Surname = child.Surname,
-                    MissedTasks = new List<TaskElement>(),
-                    TaskForDates = new List<TaskForDate>(),
-                    Tasks = new List<TaskType>()
-                });
-                return View();
-            }
             return View();
         }
 
@@ -51,7 +39,7 @@ namespace Task_Manager.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.AddTask(User.Identity.Name, taskModel);
+                //db.AddTask(User.Identity.Name, taskModel);
                 return View(ViewData["chlildId"] = taskModel.ChildId);
             }
             else ViewData["chlildId"] = taskModel.ChildId; return View(taskModel);

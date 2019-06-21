@@ -1,12 +1,3 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-@foreach (var child in ViewData["list"] as List<Child>)
-{
-    <h3>@child.Name tasks</h3>
-    foreach (var item in child.TaskForDates)
-    {
-        <h4>@item.TaskElement.TaskName</h4>
-    }
-}

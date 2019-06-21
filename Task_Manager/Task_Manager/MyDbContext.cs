@@ -12,8 +12,7 @@ namespace Task_Manager
         public DbSet<User> Users { get; set; }
         public DbSet<Child> Childs { get; set; }
         public DbSet<TaskForDate> TaskForDates { get; set; }
-        public DbSet<TaskType> Types { get; set; }
-        public DbSet<TaskElement> TaskModels { get; set; }
+        public DbSet<TaskElement> TaskElements { get; set; }
 
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
