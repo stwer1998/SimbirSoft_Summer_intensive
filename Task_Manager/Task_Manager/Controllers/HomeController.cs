@@ -26,6 +26,12 @@ namespace Task_Manager.Controllers
             ViewData["list"]= db.GetTodayTasks(User.Identity.Name);
             return View();
         }
+
+        public IActionResult Settings()
+        {
+            ViewData["list"] = db.GetChilds(User.Identity.Name);
+            return View();
+        }
         
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

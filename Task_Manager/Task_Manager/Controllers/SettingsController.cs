@@ -41,9 +41,9 @@ namespace Task_Manager.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddTask(int chlildId)
+        public IActionResult AddTask(int childId)
         {
-            ViewData["chlildId"] = chlildId;
+            ViewData["chlildId"] = childId;
             return View();
         }
         [HttpPost]
@@ -51,10 +51,10 @@ namespace Task_Manager.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.AddTask(User.Identity.Name,taskModel);
+                db.AddTask(User.Identity.Name, taskModel);
                 return View(ViewData["chlildId"] = taskModel.ChildId);
             }
-            else return View(taskModel);
+            else ViewData["chlildId"] = taskModel.ChildId; return View(taskModel);
         }
     }
 }

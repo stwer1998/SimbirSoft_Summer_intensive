@@ -8,7 +8,11 @@
 <form asp-antiforgery="true" asp-action="AddTask" asp-controller="Settings">
     <div>
         <div class="validation" asp-validation-summary="ModelOnly"></div>
-        <input type="hidden" name="ChildId" value="@ViewData["chlildId"]" />
+        <div>
+            
+            <input type="hidden" name="ChildId" value="@ViewData["chlildId"]" />
+            
+        </div>
         <div>
             <label asp-for="TypeTask">Категория занятие</label><br />
             <input type="text" asp-for="TypeTask" />

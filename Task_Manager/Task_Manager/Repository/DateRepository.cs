@@ -70,6 +70,11 @@ namespace Task_Manager.Repository
 
         }
 
+        public List<Child> GetChilds(string login)
+        {
+            return db.Users.Include(x => x.Childs).FirstOrDefault(x => x.Login == login).Childs;
+        }
+
         public List<Child> GetTodayTasks(string login)
         {
             var a = db.Users.

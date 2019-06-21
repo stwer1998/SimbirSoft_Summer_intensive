@@ -11,6 +11,7 @@ namespace Task_Manager.Interfaces
         void AddChild(string login, Child child);
         void AddTask(string login, TaskModel taskModel);
         void UpdateUserDate(string login);
-        List<Child> GetTodayTasks(string login); 
+        List<Child> GetTodayTasks(string login);
+        List<Child> GetChilds(string login);
     }
 }

@@ -31,3 +31,4 @@ d:\C#\SimbirSoft_Summer_intensive\Task_Manager\Task_Manager\obj\Debug\netcoreapp
 d:\C#\SimbirSoft_Summer_intensive\Task_Manager\Task_Manager\obj\Debug\netcoreapp2.1\Task_Manager.csproj.CopyComplete
 D:\C#\SimbirSoft_Summer_intensive\Task_Manager\Task_Manager\obj\Debug\netcoreapp2.1\Razor\Views\Settings\AddChild.g.cshtml.cs
 D:\C#\SimbirSoft_Summer_intensive\Task_Manager\Task_Manager\obj\Debug\netcoreapp2.1\Razor\Views\Settings\AddTask.g.cshtml.cs
+D:\C#\SimbirSoft_Summer_intensive\Task_Manager\Task_Manager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Settings.g.cshtml.cs
