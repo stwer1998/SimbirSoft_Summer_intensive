@@ -1,3 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model Task_Manager.Models.DtoForIndex;
+
+@foreach (var item in Model.Childs)
+{
+<h4>@item.Name @item.Surname   должен сделать </h4>
+    @foreach (var task in Model.TasksToday[item])
+    {
+    <h5>@task.TaskElement.TaskName @task.TaskElement.TaskCategory @task.StatusTask.ToString() </h5>
+    }
+
+}

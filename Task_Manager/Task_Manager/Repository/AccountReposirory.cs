@@ -20,7 +20,7 @@ namespace Task_Manager.Repository
             db.SaveChanges();
         }
 
-        public bool GetLogin(string login)
+        public bool CheckLogin(string login)
         {
             var u = db.Users.FirstOrDefault(x => x.Login == login);
             if (u == null || u.Login != login) { return false; }

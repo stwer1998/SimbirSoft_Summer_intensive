@@ -41,6 +41,7 @@ namespace Task_Manager
             services.AddScoped<IChildRepository,ChildRepository>();
             services.AddScoped<IScheduleRepository,ScheduleRepository>();
             services.AddScoped<ITaskRepository,TaskRepository>();
+            services.AddScoped<ITaskForDateRepository,TaskForDateRepository>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
               .AddCookie(options => //CookieAuthenticationOptions

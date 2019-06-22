@@ -50,7 +50,7 @@ namespace Task_Manager.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model)
         {
-            if (unitofwork.GetLogin(model.Name))
+            if (unitofwork.CheckLogin(model.Name))
             {
                 ModelState.AddModelError("Name", "Пользователь с таким именим уже есть");
             }

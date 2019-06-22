@@ -5,7 +5,7 @@ namespace Task_Manager.Interfaces
     public interface IAccountReposirory
     {
         /// <summary>
-        /// Если есть пользователь с таким Login и Password то вернет true
+        /// Если есть пользователь с таким Login и Password то вернет User
         /// </summary>
         /// <param name="login"></param>
         /// <param name="password"></param>
@@ -21,6 +21,6 @@ namespace Task_Manager.Interfaces
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
-        bool GetLogin(string login);
+        bool CheckLogin(string login);
     }
 }

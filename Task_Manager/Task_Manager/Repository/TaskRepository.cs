@@ -18,6 +18,7 @@ namespace Task_Manager.Repository
         public void AddTask(TaskElement taskElement)
         {
             db.TaskElements.Add(taskElement);
+            db.Childs.FirstOrDefault(x => x.ChildId == taskElement.ChildId).UpdateDate = DateTime.Now.Date.AddDays(-1);
             db.SaveChanges();
         }
 

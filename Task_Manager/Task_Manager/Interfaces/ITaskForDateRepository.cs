@@ -10,7 +10,7 @@ namespace Task_Manager.Interfaces
         /// </summary>
         /// <param name="childId"></param>
         /// <returns></returns>
-        List<TaskElement> GetTodayTaskForUser(int childId);
+        List<TaskForDate> GetTodayTaskForUser(int childId);
         /// <summary>
         /// пересчитывание расписание
         /// </summary>

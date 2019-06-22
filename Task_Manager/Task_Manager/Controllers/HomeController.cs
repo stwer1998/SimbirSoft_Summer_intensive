@@ -16,25 +16,46 @@ namespace Task_Manager.Controllers
         private IUserRepository dbUser;
         private IChildRepository dbChild;
         private ITaskRepository dbTask;
-
-        public HomeController(IUserRepository dbUser,IChildRepository dbChild,ITaskRepository dbTask)
+        private ITaskForDateRepository dbtaskToday;
+        public HomeController(IUserRepository dbUser,IChildRepository dbChild,ITaskRepository dbTask, ITaskForDateRepository dbtaskToday)
         {
             this.dbUser = dbUser;
             this.dbChild = dbChild;
             this.dbTask = dbTask;
+            this.dbtaskToday = dbtaskToday;
         }      
 
 
         public IActionResult Index()
-        {          
-            return View();
+        {
+            var model = new DtoForIndex
+            {
+                Childs = new List<Child>(),
+                TasksToday = new Dictionary<Child, List<TaskForDate>>()
+            };
+            model.Childs.AddRange(
+                    dbChild
+                    .GetUserChilds(
+                        dbUser
+                        .GetUserId(User.Identity.Name)));
+            foreach (var child in model.Childs)
+            {
+                dbtaskToday.UpdeteScheduleChild(child.ChildId);
+                model.TasksToday.Add(child,new List<TaskForDate>());
+                model.TasksToday[child].AddRange(dbtaskToday.GetTodayTaskForUser(child.ChildId));
+            }
+           
+            
+            return View(model);
         }
 
         public IActionResult Settings()
         {
-            DtoModelSetings model = new DtoModelSetings();
-            model.UserId = dbUser.GetUserId(User.Identity.Name);
-            model.Childs = new List<DtoModelChild>();
+            DtoModelSetings model = new DtoModelSetings
+            {
+                UserId = dbUser.GetUserId(User.Identity.Name),
+                Childs = new List<DtoModelChild>()
+            };
             var childs= dbChild.GetUserChilds(model.UserId);
             foreach (var item in childs)
             {
