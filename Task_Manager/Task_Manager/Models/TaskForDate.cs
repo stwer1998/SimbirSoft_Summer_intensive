@@ -1,16 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Task_Manager.Models
 {
+    /// <summary>
+    /// Класс содержащий расписание занятий
+    /// </summary>
     public class TaskForDate
     {
+        /// <summary>
+        /// Идентификатор записи
+        /// </summary>
         public int TaskForDateId { get; private set; }
+
+        /// <summary>
+        /// Занятие
+        /// </summary>
         public TaskElement TaskElement { get; set; }
+
+        /// <summary>
+        /// Время когда должено выполнено занятие
+        /// </summary>
         public DateTime DateOfTask { get; set; }
+
+        /// <summary>
+        /// Идентификатор ребёнка которому принадлежит запись
+        /// </summary>
         public int ChildId { get; set; }
+
+        /// <summary>
+        /// статус занятие (по расписанию, пропушенное ...)
+        /// </summary>
+        public string StatusTask { get; set; }
+
+        /// <summary>
+        /// Флаг выполнения занятии
+        /// </summary>
         public bool IsDone { get; set; }
     }
 }

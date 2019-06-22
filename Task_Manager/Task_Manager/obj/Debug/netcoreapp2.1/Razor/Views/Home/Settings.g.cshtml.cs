@@ -65,7 +65,7 @@ using Task_Manager.Models;
             WriteLiteral("\r\n<h2>Settings</h2>\r\n\r\n");
             EndContext();
             BeginContext(69, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75d43ebf1a7046fb934c709aaac33f56", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b5a2f239fbd459f8a583ee377406742", async() => {
                 BeginContext(120, 16, true);
                 WriteLiteral("Добавить ребёнка");
                 EndContext();
@@ -98,7 +98,7 @@ using Task_Manager.Models;
             WriteLiteral("    ");
             EndContext();
             BeginContext(213, 134, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c65f0ec3e994d10a4caaf6122cd7c47", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0d645a8c2a7d4025af4e7a990a45a58a", async() => {
                 BeginContext(297, 22, true);
                 WriteLiteral(" Добавить задание для ");
                 EndContext();

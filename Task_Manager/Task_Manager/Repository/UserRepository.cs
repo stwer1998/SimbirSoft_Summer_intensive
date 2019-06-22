@@ -39,7 +39,6 @@ namespace Task_Manager.Repository
         public void UpdateUserUpdateTime(string login)
         {
             var user = db.Users.FirstOrDefault(x => x.Login == login);
-            user.UpdateTime = DateTime.Now.Date;
             db.SaveChanges();
         }
     }

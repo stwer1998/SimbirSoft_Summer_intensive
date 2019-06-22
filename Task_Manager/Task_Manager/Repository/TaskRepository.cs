@@ -35,7 +35,6 @@ namespace Task_Manager.Repository
             task.TaskCategory = taskElement.TaskCategory;
             task.Point = taskElement.Point;
             task.Periodicity = taskElement.Periodicity;
-            task.Description = taskElement.Description;
             db.SaveChanges();
         }
 

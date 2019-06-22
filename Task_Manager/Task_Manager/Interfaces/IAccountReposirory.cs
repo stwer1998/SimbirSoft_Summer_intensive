@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Task_Manager.Models;
+﻿using Task_Manager.Models;
 
 namespace Task_Manager.Interfaces
 {
