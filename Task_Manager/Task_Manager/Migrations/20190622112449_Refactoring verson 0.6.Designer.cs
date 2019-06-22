@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Task_Manager;
 
 namespace Task_Manager.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190622112449_Refactoring verson 0.6")]
+    partial class Refactoringverson06
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +33,7 @@ namespace Task_Manager.Migrations
 
                     b.Property<DateTime>("RegisterDate");
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("Surname");
 
                     b.Property<DateTime>("UpdateDate");
 
@@ -78,6 +78,8 @@ namespace Task_Manager.Migrations
                     b.Property<int>("ChildId");
 
                     b.Property<DateTime>("DateOfTask");
+
+                    b.Property<bool>("IsDone");
 
                     b.Property<int>("StatusTask");
 

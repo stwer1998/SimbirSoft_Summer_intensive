@@ -30,8 +30,8 @@ namespace Task_Manager.Repository
         public User GetUser(string login, string password)
         {
             var u = db.Users.FirstOrDefault(x => x.Login == login && x.Password == password);
-            if (u.Login == login) { return u; }
-            else return null;
+            if (u == null || u.Login!=login ) { return null; }
+            else return u;
         }
     }
 }

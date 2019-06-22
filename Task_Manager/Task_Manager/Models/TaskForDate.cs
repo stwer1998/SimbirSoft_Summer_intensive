@@ -30,11 +30,14 @@ namespace Task_Manager.Models
         /// <summary>
         /// статус занятие (по расписанию, пропушенное ...)
         /// </summary>
-        public string StatusTask { get; set; }
+        public Status StatusTask { get; set; }
 
-        /// <summary>
-        /// Флаг выполнения занятии
-        /// </summary>
-        public bool IsDone { get; set; }
+    }
+
+    public enum Status
+    {
+        Schedule,
+        Missed,
+        Done
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Task_Manager.Interfaces
 {
-    interface IScheduleRepository
+    public interface IScheduleRepository
     {
     }
 }

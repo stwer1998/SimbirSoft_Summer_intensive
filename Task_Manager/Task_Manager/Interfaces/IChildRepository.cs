@@ -3,7 +3,7 @@ using Task_Manager.Models;
 
 namespace Task_Manager.Interfaces
 {
-    interface IChildRepository
+    public interface IChildRepository
     {
         /// <summary>
         /// Добавляет ребёнка в базу
@@ -19,7 +19,7 @@ namespace Task_Manager.Interfaces
         /// Удаляет ребёнка
         /// </summary>
         /// <param name="idChild"></param>
-        void DeleteChild(int idChild);
+        void DeleteChild(int userId,int idChild);
         /// <summary>
         /// Получение всех детей пользователя
         /// </summary>
@@ -32,5 +32,13 @@ namespace Task_Manager.Interfaces
         /// <param name="childId"></param>
         /// <returns></returns>
         Child GetChild(int childId);
+
+        /// <summary>
+        /// Возвращает true если у пользователя нет ребёнка имеющего такого имени и фамилии
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="child"></param>
+        /// <returns></returns>
+        bool GetNameSurnameChild(int userId,Child child);
     }
 }

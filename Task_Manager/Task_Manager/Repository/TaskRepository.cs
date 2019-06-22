@@ -40,7 +40,9 @@ namespace Task_Manager.Repository
 
         public List<TaskElement> GetChildTaskElements(int childId)
         {
-            return db.TaskElements.Where(x => x.ChildId == childId && x.EndDate < x.StartDate).ToList(); 
+            var result= db.TaskElements.Where(x => x.ChildId == childId && x.EndDate < x.StartDate).ToList();
+            if (result == null) { return new List<TaskElement>(); }
+            else return result;
         }
 
         public TaskElement GetTaskElement(int taskElementId)

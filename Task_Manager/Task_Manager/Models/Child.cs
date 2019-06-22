@@ -13,13 +13,15 @@ namespace Task_Manager.Models
         /// <summary>
         /// Имя ребёнка
         /// </summary>
-        [Required(ErrorMessage = "Не указано логин")]
+        [Required(ErrorMessage = "Не указано Имя")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
         public string Name { get;  set; }
 
         /// <summary>
         /// Фамилия ребёнка
         /// </summary>
+        [Required(ErrorMessage = "Не указано Имя")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
         public string Surname { get; set; }
 
         /// <summary>

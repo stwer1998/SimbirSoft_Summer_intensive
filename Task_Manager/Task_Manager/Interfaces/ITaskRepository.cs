@@ -3,7 +3,7 @@ using Task_Manager.Models;
 
 namespace Task_Manager.Interfaces
 {
-    interface ITaskRepository
+    public interface ITaskRepository
     {
         /// <summary>
         /// Добавление занятие

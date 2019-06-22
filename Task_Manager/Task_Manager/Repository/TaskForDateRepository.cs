@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,44 +19,109 @@ namespace Task_Manager.Repository
         public List<TaskElement> GetTodayTaskForUser(int childId)
         {
             return db.TaskForDates
-                .Where(x => x.DateOfTask == DateTime.Now.Date && x.IsDone == false)
+                .Where(x => x.DateOfTask == DateTime.Now.Date && x.StatusTask!=Status.Done)
                 .Select(z=>z.TaskElement)
                 .ToList();
         }
 
         public void MarkDoneTasksChild(int childId, int[] idtaskarray)
         {
-            var tasks = db.TaskForDates.Where(x => x.DateOfTask == DateTime.Now.Date && x.IsDone == false);
+            var tasks = db.TaskForDates.Where(x => x.DateOfTask == DateTime.Now.Date && x.StatusTask != Status.Done);
             for (int i = 0; i < idtaskarray.Count(); i++)
             {
-                tasks.FirstOrDefault(x => x.TaskForDateId == idtaskarray[i]).IsDone = true;
+                tasks.FirstOrDefault(x => x.TaskForDateId == idtaskarray[i]).StatusTask = Status.Done;
             }
             db.SaveChanges();
         }
 
         public void UpdeteScheduleChild(int childId)
         {
-            var tasksForDates = new List<TaskForDate>();
+
             if (db.Childs.FirstOrDefault(x => x.ChildId == childId).UpdateDate == DateTime.Now.Date)
             {
-                var tasks = db.TaskElements.Where(x => x.ChildId == childId).ToList();
+
+            }
+            else if (db.Childs.FirstOrDefault(x => x.ChildId == childId).UpdateDate == DateTime.Now.Date.AddDays(-1))
+            {
+                var tasks = new List<TaskElement>();
+                tasks=GetTaskForToday(childId);
+
                 foreach (var item in tasks)
                 {
-                    var taskfordate = new TaskForDate()
-                    {
-                        ChildId = childId,
-                        DateOfTask = DateTime.Now.Date,
-                        IsDone = false,
-                        TaskElement = item,
-                        StatusTask="onschedule"
-                    };
-                    tasksForDates.Add(taskfordate);
+                    db.TaskForDates.Add(
+                            new TaskForDate()
+                            {
+                                DateOfTask = DateTime.Now.Date,
+                                StatusTask = Status.Schedule,
+                                TaskElement = item,
+                                ChildId = childId
+                            });
+                    item.Point = DateTime.Now.Date.AddDays(item.Periodicity);
                 }
+                db.SaveChanges();
+                tasks = GetMissedTasks(childId);
+
+                foreach (var item in tasks)
+                {
+                    db.TaskForDates.Add(
+                            new TaskForDate()
+                            {
+                                DateOfTask = DateTime.Now.Date,
+                                StatusTask = Status.Missed,
+                                TaskElement = item,
+                                ChildId = childId
+                            });
+                }
+                db.SaveChanges();
+
             }
             else
             {
 
             }
+        }
+
+       
+        private List<TaskElement> GetTaskForToday(int childId)
+        {
+           var tasks= db.TaskElements.
+                Where(x => x.ChildId == childId&&
+                x.Point==DateTime.Now.Date).
+                ToList();
+
+            return FilterTaskElement(childId,tasks);            
+        }
+
+        private List<TaskElement> GetMissedTasks(int childId)
+        {
+            var tasks= db.TaskForDates.Where(x => x.ChildId == childId
+            && x.DateOfTask == DateTime.Now.Date.AddDays(-1)
+            && x.StatusTask == Status.Schedule)
+            .Include(x => x.TaskElement)
+            .Select(x => x.TaskElement)
+            .ToList();
+
+            return FilterTaskElement(childId,tasks);
+        }
+
+        private List<TaskElement> FilterTaskElement(int childId,List<TaskElement> tasks)
+        {
+            var result = new List<TaskElement>();
+
+            foreach (var item in tasks)
+            {
+                var task = db.TaskForDates
+                    .FirstOrDefault(x => x.ChildId == childId
+                    && x.DateOfTask != DateTime.Now.Date
+                    && x.TaskElement == item
+                    && x.StatusTask != Status.Done);
+                if (task.TaskElement != item)
+                {
+                    result.Add(task.TaskElement);
+                }
+            }
+
+            return result;
         }
     }
 }

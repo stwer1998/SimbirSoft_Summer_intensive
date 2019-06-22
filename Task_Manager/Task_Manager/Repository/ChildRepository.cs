@@ -21,7 +21,7 @@ namespace Task_Manager.Repository
             db.SaveChanges();
         }
 
-        public void DeleteChild(int idChild)
+        public void DeleteChild(int userId,int idChild)
         {
             db.Childs.Remove(db.Childs.First(x=>x.ChildId==idChild));
             db.SaveChanges();
@@ -40,9 +40,23 @@ namespace Task_Manager.Repository
             return db.Childs.FirstOrDefault(x=>x.ChildId==childId);
         }
 
+        public bool GetNameSurnameChild(int userId, Child child)
+        {
+            var ch = db.Childs.FirstOrDefault(x=>x.UserId==userId
+            &&x.Name==child.Name
+            &&x.Surname==child.Surname);
+            if (ch != null && ch.UserId == userId && ch.Name == child.Name && ch.Surname == child.Surname)
+            {
+                return false;
+            }
+            else return true;
+        }
+
         public List<Child> GetUserChilds(int idUser)
         {
-            return db.Childs.Where(x => x.UserId == idUser).ToList();
+            var result= db.Childs.Where(x => x.UserId == idUser).ToList();
+            if (result == null) { return new List<Child>(); }
+            else return result;
         }
     }
 }

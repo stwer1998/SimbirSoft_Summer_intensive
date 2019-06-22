@@ -3,7 +3,7 @@ using Task_Manager.Models;
 
 namespace Task_Manager.Interfaces
 {
-    interface ITaskForDateRepository
+    public interface ITaskForDateRepository
     {
         /// <summary>
         /// Вернёт все занятие ребёнка на сегодня которые ещё не закончены
