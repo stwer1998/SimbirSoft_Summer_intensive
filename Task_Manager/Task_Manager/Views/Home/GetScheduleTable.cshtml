@@ -2,11 +2,18 @@
 @{
     ViewData["Title"] = "GetScheduleTable";
 }
-@model List<TaskForDate>;
+@model List<List<string>>;
 <h2>GetScheduleTable</h2>
 
-@foreach (var item in Model)
-{
-    @item.TaskElement.TaskName  @item.DateOfTask <br />
-}
+<table>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+    <tr>
+        @for (int j = 0; j < Model[i].Count; j++)
+        {
+            <td>@Model[i][j]</td>
+        }
+    </tr>
+    }
+</table>
 

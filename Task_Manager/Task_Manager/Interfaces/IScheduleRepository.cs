@@ -15,5 +15,7 @@ namespace Task_Manager.Interfaces
         /// <param name="endate"></param>
         /// <returns></returns>
         List<TaskForDate> GetSchedule(int childId,DateTime startdate,DateTime endate);
+
+        List<List<string>> GetTable(int childId, DateTime startdate, DateTime endate);
     }
 }

@@ -64,7 +64,7 @@ namespace Task_Manager.Controllers
         [HttpPost]
         public IActionResult GetScheduleTable(int childId, DateTime startdate, DateTime endate)
         {
-            var a = dbSchedule.GetSchedule(childId, startdate, endate);
+            var a = dbSchedule.GetTable(childId, startdate, endate);
             return View(a);
         }
 

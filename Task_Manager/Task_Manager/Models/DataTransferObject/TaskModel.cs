@@ -13,9 +13,11 @@ namespace Task_Manager.Models
         public string TypeTask { get; set; }
         [Required(ErrorMessage = "Не указано название занятие")]
         public string NameTask { get; set; }
-        [Required(ErrorMessage = "Не указано название")]
+        [Required(ErrorMessage = "Не указано периодичность")]
         [Range(1,int.MaxValue,ErrorMessage ="Пероидичнось должно быть в интервале от 1 до 2147483647")]
         public int Periodicity { get; set; }
+        [Required(ErrorMessage = "Не указано дата начало")]
+        public DateTime StartDate { get; set; }
 
     }
 }

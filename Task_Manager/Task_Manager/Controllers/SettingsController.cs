@@ -72,6 +72,10 @@ namespace Task_Manager.Controllers
         [HttpPost]
         public IActionResult AddTask(TaskModel taskModel)
         {
+            if (taskModel.StartDate < DateTime.Now)
+            {
+                ModelState.AddModelError("StartDate", "Eror");
+            }
             if (ModelState.IsValid)
             {
                 var task = new TaskElement()
@@ -80,8 +84,8 @@ namespace Task_Manager.Controllers
                     TaskCategory = taskModel.TypeTask,
                     TaskName = taskModel.NameTask,
                     Periodicity = taskModel.Periodicity,
-                    StartDate = DateTime.Now.Date,
-                    Point = DateTime.Now.Date
+                    StartDate = taskModel.StartDate.Date,
+                    Point = taskModel.StartDate.Date
                 };
                 dbTask.AddTask(task);
                 return RedirectToAction("Settings", "Home");

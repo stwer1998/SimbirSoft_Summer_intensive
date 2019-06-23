@@ -9,9 +9,9 @@
     <div>
         <div class="validation" asp-validation-summary="ModelOnly"></div>
         <div>
-            
+
             <input type="hidden" name="ChildId" value="@ViewData["chlildId"]" />
-            
+
         </div>
         <div>
             <label asp-for="TypeTask">Категория занятие</label><br />
@@ -28,7 +28,11 @@
             <input type="number" asp-for="Periodicity" />
             <span asp-validation-for="Periodicity"></span>
         </div>
-
+        <div>
+            <label asp-for="StartDate">Начало занятие</label><br />
+            <input type="date" asp-for="StartDate" />
+            <span asp-validation-for="StartDate"></span>
+        </div>
 
         <div>
             <input type="submit" value="Добавить" />

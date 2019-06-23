@@ -24,6 +24,38 @@ namespace Task_Manager.Repository
             return result;
         }
 
+        public List<List<string>> GetTable(int childId, DateTime startdate, DateTime endate)
+        {
+            var result = new List<List<string>>();
+            var tasks = GetSchedule(childId,startdate,endate);
+            result.Add(new List<string>());
+            result[0].Add(" ");
+            for (DateTime i = startdate.Date; i < endate.Date; i=i.AddDays(1))
+            {
+                result[0].Add(i.Date.ToString());
+            }
+            var r = tasks.Select(x => x.TaskElement).Distinct().ToList();
+            for (int i = 0; i < r.Count; i++)
+            {
+                result.Add(new List<string>());
+                result[i + 1].Add(r[i].TaskName + " " + r[i].TaskCategory);
+                for (int j = 1; j < result[0].Count; j++)
+                {
+                    result[i + 1].Add(string.Empty);
+                }
+            }
+            foreach (var item in tasks)
+            {
+                var y = r.IndexOf(item.TaskElement)+1;
+                var a = item.DateOfTask.Date.ToString();
+                var x = result[0].IndexOf(a);
+                result[y][x] = "+";
+            }
+
+
+            return result;
+        }
+
         private List<TaskForDate> GetArchiveDates(int childId, DateTime startdate, DateTime endate)
         {
             var result = new List<TaskForDate>();
