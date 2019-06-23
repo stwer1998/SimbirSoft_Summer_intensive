@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "GetSchedule";
+}
+@model List<Child>;
+<h2>GetSchedule</h2>
+
+<form asp-controller="Home" asp-action="GetScheduleTable" method="post">
+    <div>
+        <label>Ребёнок</label>
+        <select name="childId">
+            @foreach (var item in Model)
+            {
+                <option value="@item.ChildId">@item.Name @item.Surname</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Начало </label>
+        <input type="date" name="startdate"/>
+    </div>
+
+    <div>
+        <label>Конец </label>
+        <input type="date" name="endate"   />
+    </div>
+
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+</form>
+

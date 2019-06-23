@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "GetScheduleTable";
+}
+@model List<TaskForDate>;
+<h2>GetScheduleTable</h2>
+
+@foreach (var item in Model)
+{
+    @item.TaskElement.TaskName  @item.DateOfTask <br />
+}
+

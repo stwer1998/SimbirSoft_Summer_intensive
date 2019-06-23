@@ -17,12 +17,15 @@ namespace Task_Manager.Controllers
         private IChildRepository dbChild;
         private ITaskRepository dbTask;
         private ITaskForDateRepository dbtaskToday;
-        public HomeController(IUserRepository dbUser,IChildRepository dbChild,ITaskRepository dbTask, ITaskForDateRepository dbtaskToday)
+        private IScheduleRepository dbSchedule;
+        public HomeController(IUserRepository dbUser,IChildRepository dbChild,ITaskRepository dbTask,
+            ITaskForDateRepository dbtaskToday, IScheduleRepository dbSchedule)
         {
             this.dbUser = dbUser;
             this.dbChild = dbChild;
             this.dbTask = dbTask;
             this.dbtaskToday = dbtaskToday;
+            this.dbSchedule = dbSchedule;
         }      
 
 
@@ -47,6 +50,22 @@ namespace Task_Manager.Controllers
            
             
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetSchedule()
+        {
+            return View(dbChild
+                    .GetUserChilds(
+                        dbUser
+                        .GetUserId(User.Identity.Name)));
+        }
+
+        [HttpPost]
+        public IActionResult GetScheduleTable(int childId, DateTime startdate, DateTime endate)
+        {
+            var a = dbSchedule.GetSchedule(childId, startdate, endate);
+            return View(a);
         }
 
         public IActionResult Settings()

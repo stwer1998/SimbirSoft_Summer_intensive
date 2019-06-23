@@ -11,9 +11,11 @@ namespace Task_Manager.Repository
     public class TaskForDateRepository : ITaskForDateRepository
     {
         private MyDbContext db;
-        public TaskForDateRepository(MyDbContext db)
+        private IScheduleRepository schedule;
+        public TaskForDateRepository(MyDbContext db, IScheduleRepository schedule)
         {
             this.db = db;
+            this.schedule = schedule;
         }
 
         public List<TaskForDate> GetTodayTaskForUser(int childId)
@@ -89,7 +91,8 @@ namespace Task_Manager.Repository
             }
             else
             {
-
+                var date = db.Childs.FirstOrDefault(x => x.ChildId == childId).UpdateDate;
+                db.TaskForDates.AddRange(schedule.GetSchedule(childId,date,DateTime.Now.Date));
             }
         }
      
