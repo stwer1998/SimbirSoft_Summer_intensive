@@ -1,32 +1,39 @@
 ﻿
 @{
-    ViewData["Title"] = "GetSchedule";
+    ViewData["Title"] = "Расписание";
 }
 @model List<Child>;
-<h2>GetSchedule</h2>
+<h3>Расписание</h3>
+<h5>Выберите ребёнка и укажите промежуток расписания для отображения.</h5>
 
 <form asp-controller="Home" asp-action="GetScheduleTable" method="post">
-    <div>
-        <label>Ребёнок</label>
-        <select name="childId">
-            @foreach (var item in Model)
-            {
-                <option value="@item.ChildId">@item.Name @item.Surname</option>
-            }
-        </select>
-    </div>
-    <div>
-        <label>Начало </label>
-        <input type="date" name="startdate"/>
-    </div>
-
-    <div>
-        <label>Конец </label>
-        <input type="date" name="endate"   />
-    </div>
-
-    <div>
-        <input type="submit" value="Save" />
-    </div>
+    <nav>
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <label>Ребёнок</label>
+                        <select name="childId" style="height: 26px; padding-left:15px">
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.ChildId">@item.Name @item.Surname</option>
+                            }
+                        </select>
+                    </li>
+                    <li style="padding-left:15px">
+                        <label> Вывести расписание с: </label>
+                        <input type="date" name="startdate" />
+                    </li>
+                    <li style="padding-left:15px">
+                        <label> по: </label>
+                        <input type="date" name="endate" />
+                    </li>
+                    <li style="padding-left:15px">
+                        <input type="submit" value="Save" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </form>
 

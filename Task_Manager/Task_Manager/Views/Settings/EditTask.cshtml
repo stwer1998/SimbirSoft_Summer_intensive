@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Редактировать занятие";
+}
+@model Task_Manager.Models.TaskElement
+
+<div class="autorization-window">
+    <h3>Редактировать занятие</h3>
+    <div class="inner-autorization">
+        <form asp-antiforgery="true" asp-action="EditTask" asp-controller="Settings">
+            <div>
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div>
+
+                    <input type="hidden" name="taskId" value="@ViewData["taskId"]" />
+
+                </div>
+                <div>
+                    <label asp-for="TaskCategory">Категория занятие</label><br />
+                    <input type="text" asp-for="TaskCategory" value="@Model.TaskCategory" />
+                    <span asp-validation-for="TaskCategory"></span>
+                </div>
+                <div>
+                    <label asp-for="TaskName">Название занития</label><br />
+                    <input type="text" asp-for="TaskName" value="@Model.TaskName" />
+                    <span asp-validation-for="TaskName"></span>
+                </div>
+                <div>
+                    <label asp-for="Periodicity">Периодичность занятие</label><br />
+                    <input type="number" asp-for="Periodicity" value="@Model.Periodicity" />
+                    <span asp-validation-for="Periodicity"></span>
+                </div>
+                <input type="submit" value="Сохранить" />
+            </div>            
+        </form>
+    </div>
+
+</div>

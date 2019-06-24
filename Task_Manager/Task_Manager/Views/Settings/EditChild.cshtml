@@ -1,26 +1,29 @@
 ﻿
 @{
-    ViewData["Title"] = "Добавить ребенка";
+    ViewData["Title"] = "Редактировать  ребенка";
 }
 @model Task_Manager.Models.Child
-<form asp-antiforgery="true" asp-action="AddChild" asp-controller="Settings">
+
+<form asp-antiforgery="true" asp-action="EditChild" asp-controller="Settings">
     <div class="autorization-window" style="width:300px">
-        <h3>Добавить ребенка</h3>
+        <h3>Редактировать ребенка</h3>
         <div class="inner-autorization">
             <div class="validation" asp-validation-summary="ModelOnly"></div>
-
+            <div>
+                <input type="hidden" name="ChildId1" value="@Model.ChildId" />
+            </div>
             <div>
                 <label asp-for="Name">Имя ребёнка</label><br />
-                <input type="text" asp-for="Name" /><br />
+                <input type="text" asp-for="Name" value="@Model.Name" />
                 <span asp-validation-for="Name"></span>
             </div>
             <div>
                 <label asp-for="Surname">Фамилия ребёнка</label><br />
-                <input type="text" asp-for="Surname" /><br />
+                <input type="text" asp-for="Surname" value="@Model.Surname" />
                 <span asp-validation-for="Surname"></span>
             </div>
 
         </div>
-        <input type="submit" value="Добавить" />
+        <input type="submit" value="Сохранить" />
     </div>
 </form>

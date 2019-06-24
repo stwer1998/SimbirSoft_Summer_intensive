@@ -27,11 +27,11 @@ namespace Task_Manager.Repository
             db.SaveChanges();
         }
 
-        public void EditChild(Child newChild)
+        public void EditChild(int childId,Child newChild)
         {
-            var child = db.Childs.FirstOrDefault(x=>x.ChildId==newChild.ChildId);
+            var child = db.Childs.FirstOrDefault(x=>x.ChildId== childId);
             child.Name = newChild.Name;
-            child.Surname = newChild.Name;
+            child.Surname = newChild.Surname;
             db.SaveChanges();
         }
 

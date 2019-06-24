@@ -1,24 +1,29 @@
 ﻿
 @{
-    ViewData["Title"] = "Settings";
+    ViewData["Title"] = "Настройки";
 }
 @model Task_Manager.Models.DtoModelSetings;
-<h2>Settings</h2>
+<h3>Настройки</h3>
 
 <a asp-action="AddChild" asp-controller="Settings">Добавить ребёнка</a><br />
 
 @foreach (var child in Model.Childs)
 {
-    <h4>@child.ChildName  @child.ChildSurName</h4>
-    <a asp-area="" asp-controller="Settings" asp-action="EditChild" asp-route-childId="@child.ChildId"> Редактировать ребёнка </a>
-    <a asp-area="" asp-controller="Settings" asp-action="DeleteChild" asp-route-childId="@child.ChildId"> | Удалить ребёнка </a>
-    <a asp-area="" asp-controller="Settings" asp-action="AddTask" asp-route-childId="@child.ChildId"> | Добавить задание для ребёнка</a>
+    <h4>
+        @child.ChildName @child.ChildSurName
+        <a asp-area="" asp-controller="Settings" asp-action="EditChild" asp-route-childId="@child.ChildId"><img src="~/icons/edit.png" height="20" width="20" title="Редактировать ребёнка" alt="Редактировать ребёнка" /></a>
+        <a asp-area="" asp-controller="Settings" asp-action="DeleteChild" asp-route-childId="@child.ChildId"><img src="~/icons/garbage.png" height="20" width="20" title="Удалить ребёнка" alt="Удалить ребёнка" /></a>
+    </h4>
+    <a asp-area="" asp-controller="Settings" asp-action="AddTask" asp-route-childId="@child.ChildId"> Добавить задание для ребёнка</a>
+
 
     @foreach (var item in child.taskElements)
     {
-        <h5>@item.TaskName</h5>
-        <a asp-area="" asp-controller="Settings" asp-action="EditTask" asp-route-taskId="@item.TaskElementId"> Редактировать занятие </a>
-        <a asp-area="" asp-controller="Settings" asp-action="DeleteTask" asp-route-taskId="@item.TaskElementId"> | Удалить занятие  </a>
+        <h5>
+            <a asp-area="" asp-controller="Settings" asp-action="EditTask" asp-route-taskId="@item.TaskElementId"><img src="~/icons/edit.png" height="15" width="15" title="Редактировать занятие" alt="Редактировать занятие" /></a>
+            <a asp-area="" asp-controller="Settings" asp-action="DeleteTask" asp-route-taskId="@item.TaskElementId"><img src="~/icons/garbage.png" height="15" width="15" title="Удалить занятие " alt="Удалить занятие" /></a>
+            @item.TaskName, Категория: @item.TaskCategory, проводится раз в @item.Periodicity дней.
+        </h5>
     }
 
 }

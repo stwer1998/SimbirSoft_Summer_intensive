@@ -25,13 +25,13 @@ namespace Task_Manager.Repository
         public void SendTaskElementToArchive(int taskElementId)
         {
             var task = db.TaskElements.FirstOrDefault(x => x.TaskElementId == taskElementId);
-            task.EndDate = DateTime.Now.Date;
+            task.EndDate = DateTime.Now.Date.AddDays(-1);
             db.SaveChanges();
         }
 
-        public void EditTask(TaskElement taskElement)
+        public void EditTask(int taskId,TaskElement taskElement)
         {
-            var task = db.TaskElements.FirstOrDefault(x => x.TaskElementId == taskElement.TaskElementId);
+            var task = db.TaskElements.FirstOrDefault(x => x.TaskElementId == taskId);
             task.TaskName =taskElement.TaskName;
             task.TaskCategory = taskElement.TaskCategory;
             task.Point = taskElement.Point;

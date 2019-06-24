@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Task_Manager.Models
 {
@@ -12,16 +13,20 @@ namespace Task_Manager.Models
         /// <summary>
         /// Категория занятии
         /// </summary>
+        [Required(ErrorMessage = "Не указано категория занятие")]
         public string TaskCategory { get; set; }
 
         /// <summary>
         /// наименование занятии
         /// </summary>
+        [Required(ErrorMessage = "Не указано название занятие")]
         public string TaskName { get; set; }
 
         /// <summary>
         /// Периодичность занятии
         /// </summary>
+        [Required(ErrorMessage = "Не указано периодичность")]
+        [Range(1, int.MaxValue, ErrorMessage = "Пероидичнось должно быть в интервале от 1 до 500")]
         public int Periodicity { get; set; }
 
         /// <summary>

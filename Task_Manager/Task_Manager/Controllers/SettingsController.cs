@@ -59,7 +59,21 @@ namespace Task_Manager.Controllers
         [HttpGet]
         public IActionResult EditChild(int childId)
         {
-            return View();
+            return View(dbChild.GetChild(childId));
+        }
+
+        [HttpPost]
+        public IActionResult EditChild(int ChildId1, Child child)
+        {
+            if (ModelState.IsValid)
+            {
+                dbChild.EditChild(ChildId1, child);
+                return RedirectToAction("Settings", "Home");
+            }
+            else
+            {                
+                return View(dbChild.GetChild(ChildId1));
+            }
         }
 
         [HttpGet]
@@ -72,7 +86,7 @@ namespace Task_Manager.Controllers
         [HttpPost]
         public IActionResult AddTask(TaskModel taskModel)
         {
-            if (taskModel.StartDate < DateTime.Now)
+            if (taskModel.StartDate < DateTime.Now.AddDays(-1))
             {
                 ModelState.AddModelError("StartDate", "Eror");
             }
@@ -104,7 +118,23 @@ namespace Task_Manager.Controllers
         [HttpGet]
         public IActionResult EditTask(int taskId)
         {
-            return View();
+            ViewData["taskId"] = taskId;
+            return View(dbTask.GetTaskElement(taskId));
+        }
+
+        [HttpPost]
+        public IActionResult EditTask(int taskId, TaskElement task)
+        {
+            if (ModelState.IsValid)
+            {
+                dbTask.EditTask(taskId, task);
+                return RedirectToAction("Settings", "Home");
+            }
+            else
+            {
+                ViewData["taskId"] = taskId;
+                return View(dbTask.GetTaskElement(taskId));
+            }
         }
     }
 }

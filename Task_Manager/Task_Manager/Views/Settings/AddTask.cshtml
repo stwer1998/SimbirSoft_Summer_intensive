@@ -1,41 +1,43 @@
 ﻿
 @{
-    ViewData["Title"] = "AddTask";
+    ViewData["Title"] = "Добавить занятие";
 }
 @model Task_Manager.Models.TaskModel
-<h2>AddTask</h2>
+<div class="autorization-window">
+    <h3>Добавить занятие</h3>
+    <div class="inner-autorization">
+        <form asp-antiforgery="true" asp-action="AddTask" asp-controller="Settings">
+            <div>
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div>
 
-<form asp-antiforgery="true" asp-action="AddTask" asp-controller="Settings">
-    <div>
-        <div class="validation" asp-validation-summary="ModelOnly"></div>
-        <div>
+                    <input type="hidden" name="ChildId" value="@ViewData["chlildId"]" />
 
-            <input type="hidden" name="ChildId" value="@ViewData["chlildId"]" />
-
-        </div>
-        <div>
-            <label asp-for="TypeTask">Категория занятие</label><br />
-            <input type="text" asp-for="TypeTask" />
-            <span asp-validation-for="TypeTask"></span>
-        </div>
-        <div>
-            <label asp-for="NameTask">Название занития</label><br />
-            <input type="text" asp-for="NameTask" />
-            <span asp-validation-for="NameTask"></span>
-        </div>
-        <div>
-            <label asp-for="Periodicity">Периодичность занятие</label><br />
-            <input type="number" asp-for="Periodicity" />
-            <span asp-validation-for="Periodicity"></span>
-        </div>
-        <div>
-            <label asp-for="StartDate">Начало занятие</label><br />
-            <input type="date" asp-for="StartDate" />
-            <span asp-validation-for="StartDate"></span>
-        </div>
-
-        <div>
+                </div>
+                <div>
+                    <label asp-for="TypeTask">Категория занятия</label><br />
+                    <input type="text" asp-for="TypeTask" title="Общая категория занятия, к примеру, Физподготовка" /><br />
+                    <span asp-validation-for="TypeTask"></span>
+                </div>
+                <div>
+                    <label asp-for="NameTask">Название занятия</label><br />
+                    <input type="text" asp-for="NameTask" title="Название занятия, к примеру, Зарядка" /><br />
+                    <span asp-validation-for="NameTask"></span>
+                </div>
+                <div>
+                    <label asp-for="Periodicity">Периодичность занятия</label><br />
+                    <input type="number" asp-for="Periodicity" title="Раз во сколько дней проводится занятие" /><br />
+                    <span asp-validation-for="Periodicity"></span>
+                </div>
+                <div>
+                    <label asp-for="StartDate">Начало занятия</label><br />
+                    <input type="date" asp-for="StartDate" title="С какого дня начинать учитывать это занятие." /><br />
+                    <span asp-validation-for="StartDate"></span><br />
+                </div>
+                      
+            </div>
             <input type="submit" value="Добавить" />
-        </div>
+        </form>
     </div>
-</form>
+
+</div>

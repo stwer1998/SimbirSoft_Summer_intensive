@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Task_Manager</title>
+    <title>@ViewData["Title"] - Планировщик занятий</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/TaskManagerStyles.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -26,26 +27,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Task_Manager</a>
+                <div class="project_logo">Планировщик занятий</div>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Settings">Settings</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="GetSchedule">GetSchedule</a></li>
-
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">План на день</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Settings">Настройки</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="GetSchedule">Расписание</a></li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><a asp-area="" asp-controller="MyNote" asp-action="Main"> @User.Identity.Name</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                        <li class="welcome-user">Добро пожаловать, @User.Identity.Name</li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a></li>
 
                     }
                     else
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Войти</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a></li>
                     }
                 </ul>
             </div>
@@ -58,7 +61,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - Task_Manager</p>
+            <p>&copy; 2019 - Планировщик занятий</p>
         </footer>
     </div>
 

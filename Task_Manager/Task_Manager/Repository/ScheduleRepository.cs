@@ -42,14 +42,21 @@ namespace Task_Manager.Repository
                 for (int j = 1; j < result[0].Count; j++)
                 {
                     result[i + 1].Add(string.Empty);
-                }
+                }   
             }
             foreach (var item in tasks)
             {
                 var y = r.IndexOf(item.TaskElement)+1;
                 var a = item.DateOfTask.Date.ToString();
                 var x = result[0].IndexOf(a);
-                result[y][x] = "+";
+                if (item.StatusTask == Status.Missed)
+                {
+                    result[y][x] = "-";
+                }
+                else
+                {
+                    result[y][x] = "+";
+                }
             }
 
 

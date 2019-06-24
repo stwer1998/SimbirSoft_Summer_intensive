@@ -1,35 +1,38 @@
 ﻿
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Регистрация";
 }
 @model Task_Manager.Models.RegisterModel
 
-<h2>Register</h2>
 <form asp-antiforgery="true" asp-action="Register" asp-controller="Account">
-    <div>
-        <div class="validation" asp-validation-summary="ModelOnly"></div>
-        <div>
-            <label>Укажите имя</label><br />
-            <input type="text" asp-for="Name" />
-            <span asp-validation-for="Name"></span>
+    <div class="autorization-window">
+        <h3>Регистрация</h3>
+
+        <div class="inner-autorization">
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label>Укажите имя</label><br />
+                <input type="text" asp-for="Name" /><br />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label>Укажите фамилию</label><br />
+                <input type="text" asp-for="Surname" /><br />
+                <span asp-validation-for="Surname"></span>
+            </div>
+            <div>
+                <label>Укажите логин для входа в систему</label><br />
+                <input type="text" asp-for="Login" /><br />
+                <span asp-validation-for="Login"></span>
+            </div>
+            <div>
+                <label>Укажите пароль</label><br />
+                <input asp-for="Password" type="password" /><br />
+                <span asp-validation-for="Password"></span>
+            </div>
         </div>
         <div>
-            <label>Укажите фамилию</label><br />
-            <input type="text" asp-for="Surname" />
-            <span asp-validation-for="Surname"></span>
-        </div>
-        <div>
-            <label>Укажите логин для входа в систему</label><br />
-            <input type="text" asp-for="Login" />
-            <span asp-validation-for="Login"></span>
-        </div>
-        <div>
-            <label>Укажите пароль</label><br />
-            <input asp-for="Password" type="password" />
-            <span asp-validation-for="Password"></span>
-        </div>
-        <div>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Зарегистрироваться" />
         </div>
     </div>
 </form>

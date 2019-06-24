@@ -1,24 +1,28 @@
 ﻿
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Авторизация";
 }
 @model Task_Manager.Models.LoginModel
-<h2>Login</h2>
 
 <form asp-antiforgery="true" asp-action="Login" asp-controller="Account">
-    <div>
-        <div class="validation" asp-validation-summary="ModelOnly"></div>
 
-        <div>
-            <label asp-for="Login">Логин</label><br />
-            <input type="text" asp-for="Login" />
-            <span asp-validation-for="Login"></span>
-        </div>
+    <div class="autorization-window">
+        <h3>Войти</h3>
 
-        <div>
-            <label asp-for="Password">Пароль</label><br />
-            <input asp-for="Password" type="password" />
-            <span asp-validation-for="Password"></span>
+        <div class="inner-autorization">
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+            <div>
+                <label asp-for="Login">Введите ваш логин</label><br />
+                <input type="text" asp-for="Login" /><br />
+                <span asp-validation-for="Login"></span>
+            </div>
+
+            <div>
+                <label asp-for="Password">Пароль</label><br />
+                <input asp-for="Password" type="password" /><br />
+                <span asp-validation-for="Password"></span>
+            </div>
         </div>
 
         <div>

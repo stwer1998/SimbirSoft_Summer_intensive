@@ -14,7 +14,7 @@ namespace Task_Manager.Interfaces
         /// Редактирование занятие
         /// </summary>
         /// <param name="taskElement"></param>
-        void EditTask(TaskElement taskElement);
+        void EditTask(int taskId,TaskElement taskElement);
         /// <summary>
         /// Отправка занятие в архив
         /// </summary>

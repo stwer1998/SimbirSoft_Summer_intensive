@@ -77,13 +77,13 @@ namespace Task_Manager.Repository
                                 TaskElement = item,
                                 ChildId = childId
                             });
-                    var task = db.TaskForDates
-                        .FirstOrDefault(x => x.DateOfTask == DateTime.Now.Date.AddDays(-1) && x.TaskElement == item);
-                    if (task != null)
-                    {
-                        db.TaskForDates
-                            .Remove(task);
-                    }
+                    //var task = db.TaskForDates
+                    //    .FirstOrDefault(x => x.DateOfTask == DateTime.Now.Date.AddDays(-1) && x.TaskElement == item);
+                    //if (task != null)
+                    //{
+                    //    db.TaskForDates
+                    //        .Remove(task);
+                    //}
                 }
                 db.Childs.FirstOrDefault(x => x.ChildId == childId).UpdateDate = DateTime.Now.Date;
                 db.SaveChanges();
@@ -92,7 +92,9 @@ namespace Task_Manager.Repository
             else
             {
                 var date = db.Childs.FirstOrDefault(x => x.ChildId == childId).UpdateDate;
-                db.TaskForDates.AddRange(schedule.GetSchedule(childId,date,DateTime.Now.Date));
+                db.TaskForDates.AddRange(schedule.GetSchedule(childId,date,DateTime.Now.Date.AddDays(1)));
+                db.Childs.FirstOrDefault(x => x.ChildId == childId).UpdateDate = DateTime.Now.Date;
+                db.SaveChanges();
             }
         }
      

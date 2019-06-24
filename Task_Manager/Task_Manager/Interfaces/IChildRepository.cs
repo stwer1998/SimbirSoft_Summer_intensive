@@ -14,7 +14,7 @@ namespace Task_Manager.Interfaces
         /// Редактирует ребёнка
         /// </summary>
         /// <param name="newChild"></param>
-        void EditChild(Child newChild);
+        void EditChild(int childId,Child newChild);
         /// <summary>
         /// Удаляет ребёнка
         /// </summary>
