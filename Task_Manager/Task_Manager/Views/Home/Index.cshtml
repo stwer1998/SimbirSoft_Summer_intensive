@@ -8,7 +8,11 @@
 <h4>@item.Name @item.Surname   должен сделать </h4>
     @foreach (var task in Model.TasksToday[item])
     {
-    <h5>@task.TaskElement.TaskName @task.TaskElement.TaskCategory @task.StatusTask.ToString() </h5>
+<h5>
+    <a asp-area="" asp-controller="Home" asp-action="SendToDone" asp-route-taskId="@task.TaskForDateId"><img src="~/icons/like.png" height="20" width="20" title="Сделано" alt="Сделано" /></a>
+    <a asp-area="" asp-controller="Home" asp-action="SendToMissed" asp-route-taskId="@task.TaskForDateId"><img src="~/icons/dislike.png" height="20" width="20" title="Нехочет" alt="Нехочет" /></a>
+    @task.TaskElement.TaskName @task.TaskElement.TaskCategory @task.StatusTask.ToString()
+</h5>
     }
 
 }

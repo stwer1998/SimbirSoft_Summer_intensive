@@ -49,6 +49,9 @@ namespace Task_Manager.Controllers
             return View(child);
         }
 
+       
+        
+
         [HttpGet]
         public IActionResult DeleteChild(int childId)
         {
@@ -88,7 +91,7 @@ namespace Task_Manager.Controllers
         {
             if (taskModel.StartDate < DateTime.Now.AddDays(-1))
             {
-                ModelState.AddModelError("StartDate", "Eror");
+                ModelState.AddModelError("StartDate", "Укажите текущую или будущую дату.");
             }
             if (ModelState.IsValid)
             {

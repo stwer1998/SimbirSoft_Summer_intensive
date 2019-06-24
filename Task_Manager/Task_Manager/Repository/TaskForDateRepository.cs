@@ -146,5 +146,19 @@ namespace Task_Manager.Repository
 
             return result;
         }
+
+        public void SentToDone(int taskForDateId)
+        {
+            var task = db.TaskForDates.FirstOrDefault(x=>x.TaskForDateId==taskForDateId);
+            if (task == null) { }
+            else { task.StatusTask = Status.Done; db.SaveChanges(); }
+        }
+
+        public void SentToMissed(int taskForDateId)
+        {
+            var task = db.TaskForDates.FirstOrDefault(x =>x.TaskForDateId == taskForDateId);
+            if (task == null) { }
+            else { task.StatusTask = Status.Missed; db.SaveChanges(); }
+        }
     }
 }

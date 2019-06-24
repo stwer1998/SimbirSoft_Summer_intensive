@@ -17,6 +17,11 @@ namespace Task_Manager.Controllers
             this.unitofwork = unitofwork;
         }
 
+        public IActionResult Instruction()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Login()
         {

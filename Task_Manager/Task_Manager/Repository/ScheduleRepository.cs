@@ -53,6 +53,10 @@ namespace Task_Manager.Repository
                 {
                     result[y][x] = "-";
                 }
+                else if (item.StatusTask == Status.Schedule)
+                {
+                    result[y][x] = "#";
+                }
                 else
                 {
                     result[y][x] = "+";
@@ -68,7 +72,7 @@ namespace Task_Manager.Repository
             var result = new List<TaskForDate>();
             result.AddRange(db.TaskForDates.Include(x=>x.TaskElement).Where(x=>x.ChildId==childId
             &&x.DateOfTask<endate
-            &&x.DateOfTask>startdate));
+            &&x.DateOfTask>startdate.AddDays(-1)));
             return result;
         }
 

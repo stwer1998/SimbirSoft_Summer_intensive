@@ -14,7 +14,7 @@
         <a asp-area="" asp-controller="Settings" asp-action="EditChild" asp-route-childId="@child.ChildId"><img src="~/icons/edit.png" height="20" width="20" title="Редактировать ребёнка" alt="Редактировать ребёнка" /></a>
         <a asp-area="" asp-controller="Settings" asp-action="DeleteChild" asp-route-childId="@child.ChildId"><img src="~/icons/garbage.png" height="20" width="20" title="Удалить ребёнка" alt="Удалить ребёнка" /></a>
     </h4>
-    <a asp-area="" asp-controller="Settings" asp-action="AddTask" asp-route-childId="@child.ChildId"> Добавить задание для ребёнка</a>
+    <a asp-area="" asp-controller="Settings" asp-action="AddTask" asp-route-childId="@child.ChildId"> Добавить занятие для ребёнка</a>
 
 
     @foreach (var item in child.taskElements)

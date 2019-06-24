@@ -65,6 +65,10 @@ namespace Task_Manager.Controllers
         public IActionResult GetScheduleTable(int childId, DateTime startdate, DateTime endate)
         {
             var a = dbSchedule.GetTable(childId, startdate, endate);
+            for (int i = 0; i < a[0].Count; i++)
+            {
+                a[0][i] = a[0][i].Split(' ')[0];
+            }
             return View(a);
         }
 
@@ -88,6 +92,18 @@ namespace Task_Manager.Controllers
             }
 
             return View(model);
+        }
+
+        public IActionResult SendToDone(int taskId)
+        {
+            dbtaskToday.SentToDone(taskId);
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult SendToMissed(int taskId)
+        {
+            dbtaskToday.SentToMissed(taskId);
+            return RedirectToAction("Index", "Home");
         }
         
 

@@ -22,5 +22,10 @@ namespace Task_Manager.Interfaces
         /// <param name="childId"></param>
         /// <param name="idtaskarray"></param>
         void MarkDoneTasksChild(int childId, int[] idtaskarray);
+
+        void SentToDone(int taskForDateId);
+
+        void SentToMissed(int taskForDateId);
+
     }
 }
