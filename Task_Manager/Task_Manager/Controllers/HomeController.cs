@@ -64,12 +64,12 @@ namespace Task_Manager.Controllers
         [HttpPost]
         public IActionResult GetScheduleTable(int childId, DateTime startdate, DateTime endate)
         {
-            var a = dbSchedule.GetTable(childId, startdate, endate);
-            for (int i = 0; i < a[0].Count; i++)
+            var matrixSchedule = dbSchedule.GetTable(childId, startdate, endate);
+            for (int i = 0; i < matrixSchedule[0].Count; i++)
             {
-                a[0][i] = a[0][i].Split(' ')[0];
+                matrixSchedule[0][i] = matrixSchedule[0][i].Split(' ')[0];
             }
-            return View(a);
+            return View(matrixSchedule);
         }
 
         public IActionResult Settings()
@@ -103,6 +103,20 @@ namespace Task_Manager.Controllers
         public IActionResult SendToMissed(int taskId)
         {
             dbtaskToday.SentToMissed(taskId);
+            return RedirectToAction("Index", "Home");
+        }
+
+        
+        public IActionResult MarkTask(int childId)
+        {
+            ViewData["childId"] = childId;
+            return View(dbTask.GetChildTaskElements(childId));
+        }
+
+        
+        public IActionResult MarkerTask(int childId,int taskId)
+        {
+            dbtaskToday.UnScheduleTask(childId, taskId);
             return RedirectToAction("Index", "Home");
         }
         

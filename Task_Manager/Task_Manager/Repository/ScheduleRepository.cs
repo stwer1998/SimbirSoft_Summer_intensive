@@ -34,11 +34,11 @@ namespace Task_Manager.Repository
             {
                 result[0].Add(i.Date.ToString());
             }
-            var r = tasks.Select(x => x.TaskElement).Distinct().ToList();
-            for (int i = 0; i < r.Count; i++)
+            var distinctTasks = tasks.Select(x => x.TaskElement).Distinct().ToList();
+            for (int i = 0; i < distinctTasks.Count; i++)
             {
                 result.Add(new List<string>());
-                result[i + 1].Add(r[i].TaskName + " " + r[i].TaskCategory);
+                result[i + 1].Add(distinctTasks[i].TaskName + " " + distinctTasks[i].TaskCategory);
                 for (int j = 1; j < result[0].Count; j++)
                 {
                     result[i + 1].Add(string.Empty);
@@ -46,20 +46,19 @@ namespace Task_Manager.Repository
             }
             foreach (var item in tasks)
             {
-                var y = r.IndexOf(item.TaskElement)+1;
-                var a = item.DateOfTask.Date.ToString();
-                var x = result[0].IndexOf(a);
+                var indexY = distinctTasks.IndexOf(item.TaskElement)+1;
+                var indexX = result[0].IndexOf(item.DateOfTask.Date.ToString());
                 if (item.StatusTask == Status.Missed)
                 {
-                    result[y][x] = "-";
+                    result[indexY][indexX] = "-";
                 }
                 else if (item.StatusTask == Status.Schedule)
                 {
-                    result[y][x] = "#";
+                    result[indexY][indexX] = "#";
                 }
                 else
                 {
-                    result[y][x] = "+";
+                    result[indexY][indexX] = "+";
                 }
             }
 

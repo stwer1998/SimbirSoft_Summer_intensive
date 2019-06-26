@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "MarkTask";
+}
+@model List<TaskElement>;
+<h2>MarkTask</h2>
+
+@foreach (var task in Model)
+{
+    <h5><a asp-controller="Home" asp-action="MarkerTask" asp-route-childId="@ViewData["childId"]" asp-route-taskId="@task.TaskElementId">
+    @task.TaskName из категории @task.TaskCategory </a></h5>
+}

@@ -76,14 +76,7 @@ namespace Task_Manager.Repository
                                 StatusTask = Status.Missed,
                                 TaskElement = item,
                                 ChildId = childId
-                            });
-                    //var task = db.TaskForDates
-                    //    .FirstOrDefault(x => x.DateOfTask == DateTime.Now.Date.AddDays(-1) && x.TaskElement == item);
-                    //if (task != null)
-                    //{
-                    //    db.TaskForDates
-                    //        .Remove(task);
-                    //}
+                            });                    
                 }
                 db.Childs.FirstOrDefault(x => x.ChildId == childId).UpdateDate = DateTime.Now.Date;
                 db.SaveChanges();
@@ -149,9 +142,16 @@ namespace Task_Manager.Repository
 
         public void SentToDone(int taskForDateId)
         {
-            var task = db.TaskForDates.FirstOrDefault(x=>x.TaskForDateId==taskForDateId);
+            var task = db.TaskForDates.Include(x=>x.TaskElement).FirstOrDefault(x=>x.TaskForDateId==taskForDateId);
             if (task == null) { }
-            else { task.StatusTask = Status.Done; db.SaveChanges(); }
+            else
+            {
+                task.StatusTask = Status.Done;
+                var taskElement=db.TaskElements.FirstOrDefault
+                    (x => x.TaskElementId == task.TaskElement.TaskElementId);
+                taskElement.Point = DateTime.Now.Date.AddDays(taskElement.Periodicity);
+                db.SaveChanges();
+            }
         }
 
         public void SentToMissed(int taskForDateId)
@@ -159,6 +159,25 @@ namespace Task_Manager.Repository
             var task = db.TaskForDates.FirstOrDefault(x =>x.TaskForDateId == taskForDateId);
             if (task == null) { }
             else { task.StatusTask = Status.Missed; db.SaveChanges(); }
+        }
+
+        public void UnScheduleTask(int childId, int taskId)
+        {
+            var task = db.TaskElements.FirstOrDefault(x => x.TaskElementId == taskId);
+            if (task == null) { }
+            else
+            {
+                var taskForDate = new TaskForDate()
+                {
+                    ChildId = childId,
+                    DateOfTask = DateTime.Now.Date,
+                    StatusTask=Status.Done,
+                    TaskElement=task
+                };
+                db.TaskForDates.Add(taskForDate);
+                task.Point = DateTime.Now.Date.AddDays(task.Periodicity);
+                db.SaveChanges();
+            }
         }
     }
 }

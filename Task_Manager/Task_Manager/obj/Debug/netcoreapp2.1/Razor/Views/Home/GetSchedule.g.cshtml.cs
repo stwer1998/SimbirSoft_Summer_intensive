@@ -67,7 +67,7 @@ using Task_Manager.Models;
             WriteLiteral("<h3>Расписание</h3>\r\n<h5>Выберите ребёнка и укажите промежуток расписания для отображения.</h5>\r\n\r\n");
             EndContext();
             BeginContext(168, 1273, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8036cb700a1945ae9da13e922c1f61f0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d8d2deec0ed3430cbac37d3dc3c78062", async() => {
                 BeginContext(240, 306, true);
                 WriteLiteral(@"
     <nav>
@@ -89,7 +89,7 @@ using Task_Manager.Models;
                 WriteLiteral("                                ");
                 EndContext();
                 BeginContext(667, 63, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0104d91f25334ba9ac5c4198f51f1a0e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83d609513c814ca997f7f23bd8d421fb", async() => {
                     BeginContext(698, 9, false);
 #line 19 "C:\Users\Администратор\source\repos\SimbirSoft_Summer_intensive\Task_Manager\Task_Manager\Views\Home\GetSchedule.cshtml"
                                                          Write(item.Name);

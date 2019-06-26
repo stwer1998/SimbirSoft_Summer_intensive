@@ -22,10 +22,21 @@ namespace Task_Manager.Interfaces
         /// <param name="childId"></param>
         /// <param name="idtaskarray"></param>
         void MarkDoneTasksChild(int childId, int[] idtaskarray);
-
+        /// <summary>
+        /// Изменяет статус запланированного задание на сделано 
+        /// </summary>
+        /// <param name="taskForDateId"></param>
         void SentToDone(int taskForDateId);
-
+        /// <summary>
+        /// Изменяет статус запланированного задание на пропущенно
+        /// </summary>
+        /// <param name="taskForDateId"></param>
         void SentToMissed(int taskForDateId);
-
+        /// <summary>
+        /// Добавляет на расписание задание как дополнительно
+        /// </summary>
+        /// <param name="childId"></param>
+        /// <param name="taskId"></param>
+        void UnScheduleTask(int childId, int taskId);
     }
 }

@@ -33,11 +33,22 @@ namespace Task_Manager.Models
         public Status StatusTask { get; set; }
 
     }
-
+    /// <summary>
+    /// Статус задание
+    /// </summary>
     public enum Status
     {
+        /// <summary>
+        /// Запланированно
+        /// </summary>
         Schedule,
+        /// <summary>
+        /// Пропущенно
+        /// </summary>
         Missed,
+        /// <summary>
+        /// Сделанно
+        /// </summary>
         Done
     }
 }

@@ -42,10 +42,10 @@ namespace Task_Manager.Repository
 
         public bool GetNameSurnameChild(int userId, Child child)
         {
-            var ch = db.Childs.FirstOrDefault(x=>x.UserId==userId
+            var savedChild = db.Childs.FirstOrDefault(x=>x.UserId==userId
             &&x.Name==child.Name
             &&x.Surname==child.Surname);
-            if (ch != null && ch.UserId == userId && ch.Name == child.Name && ch.Surname == child.Surname)
+            if (savedChild != null && savedChild.UserId == userId && savedChild.Name == child.Name && savedChild.Surname == child.Surname)
             {
                 return false;
             }

@@ -22,16 +22,16 @@ namespace Task_Manager.Repository
 
         public bool CheckLogin(string login)
         {
-            var u = db.Users.FirstOrDefault(x => x.Login == login);
-            if (u == null || u.Login != login) { return false; }
+            var user = db.Users.FirstOrDefault(x => x.Login == login);
+            if (user == null || user.Login != login) { return false; }
             else return true;
         }
 
         public User GetUser(string login, string password)
         {
-            var u = db.Users.FirstOrDefault(x => x.Login == login && x.Password == password);
-            if (u == null || u.Login!=login ) { return null; }
-            else return u;
+            var user = db.Users.FirstOrDefault(x => x.Login == login && x.Password == password);
+            if (user == null || user.Login!=login ) { return null; }
+            else return user;
         }
     }
 }
